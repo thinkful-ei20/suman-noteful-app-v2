@@ -2,19 +2,11 @@
 
 const knex = require('../knex');
 
-let searchTerm = 'gaga';
-knex
-  .select('notes.id', 'title', 'content')
+let id = 1001;
+let newItem = { title: 'title test', content: ' testing -content'};
+knex  
   .from('notes')
-  .modify(queryBuilder => {
-    if (searchTerm) {
-      queryBuilder.where('title', 'like', `%${searchTerm}%`);
-    }
-  })
-  .orderBy('notes.id')
-  .then(results => {
-    console.log(JSON.stringify(results, null, 2));
-  })
-  .catch(err => {
-    console.error(err);
-  });
+  .where({ id :id})
+  .del()  
+  .then(results => console.log(JSON.stringify(results)))
+  .catch(err => { console.error(err)});
