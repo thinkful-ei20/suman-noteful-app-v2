@@ -4,7 +4,14 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
 
-//Get All ()
+/* ========= POST =======*/
+router.get('/tags',(req,res,next) => {
+  knex
+    .select('id','name')
+    .from('tags')
+    .then(results => res.json(results);)
+    .catch(err => next(err));
+});
 
 
 
