@@ -28,7 +28,18 @@ router.get('/tags/:id',(req,res,next) => {
     .catch(err => next(err));
 });
 
-
+/* ========= DELETE BY ID =======*/
+router.delete('/tags/:id',(req,res,next) =>{
+  const id = req.params.id;
+  knex
+    .del()
+    .from('tags')
+    .where({id :id})
+    .then(() => {
+      res.status(204).end();
+    })
+    .catch(err => next(err));
+});
 
 
 
