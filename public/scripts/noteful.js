@@ -151,13 +151,15 @@ const noteful = (function () {
         id: store.currentNote.id,
         title: editForm.find('.js-note-title-entry').val(),
         content: editForm.find('.js-note-content-entry').val(),
-        folderId: editForm.find('.js-note-folder-entry').val(),
-        tags: editForm.find('.js-note-tags-entry').val()
+        folder_id: editForm.find('.js-note-folder-entry').val(),
+        tags: editForm.find('.js-note-tags-entry').val()        
       };
+      console.log('noteObj ' , noteObj );
 
       if (store.currentNote.id) {
         api.update(`/api/notes/${noteObj.id}`, noteObj)
           .then(updateResponse => {
+            console.log(updateResponse);
             store.currentNote = updateResponse;
             return api.search('/api/notes', store.currentQuery);
           })
