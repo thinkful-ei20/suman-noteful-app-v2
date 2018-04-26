@@ -9,7 +9,7 @@ router.get('/tags',(req,res,next) => {
   knex
     .select('id','name')
     .from('tags')
-    .then(results => res.json(results);)
+    .then(results => {res.json(results)})
     .catch(err => next(err));
 });
 
