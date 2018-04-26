@@ -51,6 +51,8 @@ INSERT INTO tags (name) VALUES
   ('#Wednesday'),
   ('#Thurday');
 
+DROP TABLE IF EXISTS notes_tags CASCADE;
+
 CREATE TABLE notes_tags (
   note_id INTEGER NOT NULL REFERENCES notes ON DELETE CASCADE,
   tag_id INTEGER NOT NULL REFERENCES tags ON DELETE CASCADE
